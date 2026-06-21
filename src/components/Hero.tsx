@@ -46,7 +46,7 @@ export default function Hero() {
             className="flex h-11 w-11 items-center justify-center rounded-lg  bg-[#11151a]/80 transition hover:border-indigo-500/80"
           >
             <img
-              src="/Icons/artstation.png"
+              src="/icons/artstation.png"
               alt="ArtStation"
               className="h-10 w-10 object-contain"
             />
@@ -59,7 +59,7 @@ export default function Hero() {
             className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#11151a]/80 transition hover:border-indigo-500/80"
           >
             <img
-              src="/Icons/email.png"
+              src="/icons/email.png"
               alt="Email"
               className="h-10 w-10 object-contain"
             />
