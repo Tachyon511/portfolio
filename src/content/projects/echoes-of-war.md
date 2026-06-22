@@ -21,13 +21,13 @@ The game was developed in Unreal Engine 5 with a combination of own and quixel a
 The game is set in 1922 after World War 1 and follows Harold Finch, a war veteran with significant PTSD symptoms. Harold lives a lonely life, accompanied only by his loved pet, a rat Ralph. The game follows Harold after the death of Ralph, which triggers severe symptoms for him.
 
 The narrative of the game is non-linear with 2 flashback PTSD induced sequences. The focus of the game is on communicating a meaningful and believable experience aimed at strengthening the empathy of the players people suffering from PTSD. The game mechanics remain pretty simple and consist mostly of exploration such as picking up keys and reading notes which guide the player forward in the game.
-![Surface-aligned movement debug](/projects/echoes-of-the-war/flashback01.png)
+![](/projects/echoes-of-the-war/flashback01.png)
 ## Environment Design
 
 The environment draws strongly on victorian architecture and props, with three distinct areas in the game: the house, the trench and the fields. Trench and the fields work as flashbacks where Harolds returns to the past while experiencing PTSD symptoms. The house is Harolds current living environment and serves as the foundation for the whole game. The environment was created mostly using quixel assets with some custom 3D models made by myself.
-![Surface-aligned movement debug](/projects/echoes-of-the-war/enviro01.png)
-![Surface-aligned movement debug](/projects/echoes-of-the-war/enviro02.png)
-![Surface-aligned movement debug](/projects/echoes-of-the-war/flashback02.png)
+![](/projects/echoes-of-the-war/enviro01.png)
+![](/projects/echoes-of-the-war/enviro02.png)
+![](/projects/echoes-of-the-war/flashback02.png)
 
 ## Trench Scene
 

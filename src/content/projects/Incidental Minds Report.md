@@ -19,7 +19,7 @@ This report documents selected work and responsibilities from my 3D / Technical 
 We Resist is a third-person, story-driven game set in Slovakia in 1942. It follows a group of guerrilla fighters resisting the Nazi regime. The game combines a strategic layer, where players build camps, gather resources, and manage soldiers, with tactical third-person missions that give players direct control over their squad.
 
 The project focuses on historical authenticity in both its narrative and worldbuilding. It was developed into a playable demo with financial support from the Slovak Arts Council.
-![References](/projects/we-resist/render01.png)
+![](/projects/we-resist/render01.png)
 
 ## 3D Modelling
 
@@ -33,8 +33,6 @@ Textures were created by other members of the team*
 
 ![Close-up render of one of the houses](/projects/we-resist/house01.png)
 ![Fence and railway models](/projects/we-resist/fences.png)
-![References](/projects/we-resist/props.png)
-
 ## Procedural Generation
 
 PCG was mainly used for the creation of fences and electric poles. The main aim was to provide level designers with effective and time-saving tools. The fences used varying levels of randomization. The planks of the wooden fences were modeled in multiple variations with various damage defects and every plank was being added individually allowing high levels of randomness. The fences included procedural spawning of NavLink proxies and colliders in order to enable NPCs to vault across them. They also included Landscape Patches making sure the landscape underneath was always in level with the fence.
@@ -42,7 +40,7 @@ PCG was mainly used for the creation of fences and electric poles. The main aim 
 
 <video src="/projects/we-resist/fencevideo.mp4" controls muted loop playsinline></video>
 
-![Wooden fence randomization](/projects/we-resist/fencegraph.png)
+![Wooden fence PCG graph](/projects/we-resist/fencegraph.png)
 
 The electric poles system required a more complex approach and consisted of a mix of blueprint logic and Unreal's PCG system. The goal was to create several main lines with sub-branches that would connect directly to houses. For the cable attachments I used Unreal's cable component and found appropriate connections using sphere traces, triggered by the construction script.
 
@@ -52,5 +50,5 @@ The electric poles system required a more complex approach and consisted of a mi
 ## Shaders 
 
 Since the project leveraged mostly hand-painted textures, the required shader work was minimal. Nontheless my work consisted of setting up a paintable landscape material & creating a plaster normal shader, simulating the rough plaster used in our historical period. I also created a tint randomization functionality for the houses increasing their visual variation and speeding up the pace of development.
-![Sub-branch logic](/projects/we-resist/housevariation.png)
-![Sub-branch logic](/projects/we-resist/plastershader.png)
+![House tint variation](/projects/we-resist/housevariation.png)
+![Plaster normal shader](/projects/we-resist/plastershader.png)

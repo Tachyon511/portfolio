@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Incidental Minds Report.md",
+                "file": "echoes-of-war.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Incidental Minds Report"
+              "title": "echoes-of-war"
             }
           }
         ]
@@ -185,11 +185,11 @@
   },
   "active": "25676acb83dc7f32",
   "lastOpenFiles": [
+    "Incidental Minds Report.md",
     "RenderingMap.0000_(7).png",
     "Pasted image 20260622232753.png",
     "echoes-of-war.md",
     "raise-the-stakes.md",
-    "Incidental Minds Report.md",
     "EchoesOfTheWar_TrenchRenderv2.png",
     "ArthurianPrototype.md",
     "spider-mech.md",

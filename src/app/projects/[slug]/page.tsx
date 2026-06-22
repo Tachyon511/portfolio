@@ -116,11 +116,11 @@ export default async function ProjectPage({
                   ),
 
                   img: ({ src, alt }) => (
-                      <ProjectImage
-                        src={src ?? ""}
-                        alt={alt ?? ""}
-                      />
-                    ),
+                    <ProjectImage
+                      src={typeof src === "string" ? src : ""}
+                      alt={alt ?? ""}
+                    />
+                  ),
 
                   video: ({ children, ...props }) => (
                     <video
