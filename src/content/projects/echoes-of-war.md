@@ -20,11 +20,11 @@ The game was developed in Unreal Engine 5 with a combination of own and quixel a
 ## Game Design
 The game is set in 1922 after World War 1 and follows Harold Finch, a war veteran with significant PTSD symptoms. Harold lives a lonely life, accompanied only by his loved pet, a rat Ralph. The game follows Harold after the death of Ralph, which triggers severe symptoms for him.
 
-The narrative of the game is non-linear with 2 flashback PTSD induced sequences. The focus of the game is on communicating a meaningful and believable experience aimed strengthening the empathy of the players people suffering from PTSD. The game mechanics remain pretty simple and consist mostly of exploration such as picking up keys and reading notes which guide the player forward in the game.
+The narrative of the game is non-linear with 2 flashback PTSD induced sequences. The focus of the game is on communicating a meaningful and believable experience aimed at strengthening the empathy of the players people suffering from PTSD. The game mechanics remain pretty simple and consist mostly of exploration such as picking up keys and reading notes which guide the player forward in the game.
 ![Surface-aligned movement debug](/projects/echoes-of-the-war/flashback01.png)
 ## Environment Design
 
-The enviroment draws strongly on victorian architecture and props, with three distinct areas in the game: the house, the trench and the fields. Trench and the fields work as flashbacks where Harolds returns to in his mind while experiencing PTSD symptoms. The house is Harolds current living environment and serves as the foundation for the whole game. The environment was created mostly using quixel assets with some custom 3D models made by myself.
+The environment draws strongly on victorian architecture and props, with three distinct areas in the game: the house, the trench and the fields. Trench and the fields work as flashbacks where Harolds returns to the past while experiencing PTSD symptoms. The house is Harolds current living environment and serves as the foundation for the whole game. The environment was created mostly using quixel assets with some custom 3D models made by myself.
 ![Surface-aligned movement debug](/projects/echoes-of-the-war/enviro01.png)
 ![Surface-aligned movement debug](/projects/echoes-of-the-war/enviro02.png)
 ![Surface-aligned movement debug](/projects/echoes-of-the-war/flashback02.png)
@@ -32,15 +32,12 @@ The enviroment draws strongly on victorian architecture and props, with three di
 ## Trench Scene
 
 The trench scene is the highlight of the whole project. It is a dynamic cinematic sequence during one of Harolds flashbacks back to WW1. After encountering a PTSD induced flashback in the attic the player finds themselves in a trench under the attack of the german troops while trying to escape. The layout of the trench matches the one of the attic creating the illusion of movement through the attic.
-<video  
-src="/projects/echoes-of-the-war/trenchvideo.mp4"  
-controls  
-muted  
-loop  
-playsinline  
-></video>
 
-The scene leverages volumetric fog to simulate a mustard gas attack with multiple dynamic particle systems simulating the impacts of artillery shells. The visual is further elevated by a gas mask which constraints the players view making the environment, together with the fog and artillery impacts, chaotic and hard to navigate. Another component of the scene is a tank modelled after the German A7V tank.
+All assets in this scene were made by myself.
+
+<video src="/projects/echoes-of-the-war/trenchvideo.mp4" controls muted loop playsinline></video>
+
+The scene leverages volumetric fog to simulate a mustard gas attack with multiple dynamic particle systems simulating the impacts of artillery shells. The visual is further elevated by a gas mask which constraints the players view making the environment, together with camera shakes, chaotic and hard to navigate. Another component of the scene is a tank modelled after the German A7V tank.
 ![Surface-aligned movement debug](/projects/echoes-of-the-war/trench01.png)
 ![Surface-aligned movement debug](/projects/echoes-of-the-war/trench02.png)
 ![Surface-aligned movement debug](/projects/echoes-of-the-war/tank01.png)

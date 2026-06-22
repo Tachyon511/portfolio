@@ -8,6 +8,8 @@ import {
   slugify,
 } from "../../../lib/projects";
 
+import ProjectImage from "../../../components/ProjectImage";
+
 const toolIcons: Record<string, string> = {
   "Unreal Engine 5": "/skills/unreal.png",
   Blender: "/skills/blender.png",
@@ -113,21 +115,12 @@ export default async function ProjectPage({
                     </p>
                   ),
 
-                  img: ({ src, alt, title }) => (
-                    <figure className="my-8 overflow-hidden rounded-lg border border-white/10 bg-[#11151a]">
-                      <img
+                  img: ({ src, alt }) => (
+                      <ProjectImage
                         src={src ?? ""}
                         alt={alt ?? ""}
-                        className="h-auto w-full object-cover"
                       />
-
-                      {(alt || title) && (
-                        <figcaption className="border-t border-white/10 px-4 py-3 text-sm text-zinc-400">
-                          {title || alt}
-                        </figcaption>
-                      )}
-                    </figure>
-                  ),
+                    ),
 
                   video: ({ children, ...props }) => (
                     <video
