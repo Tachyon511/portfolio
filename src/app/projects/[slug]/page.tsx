@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import rehypeRaw from "rehype-raw";
 import {
   getAllProjects,
   getProjectBySlug,
@@ -90,6 +91,7 @@ export default async function ProjectPage({
             <div className="max-w-3xl">
               <ReactMarkdown
                 remarkPlugins={[remarkGfm]}
+                rehypePlugins={[rehypeRaw]}
                 components={{
                   h2: ({ children }) => {
                     const text = String(children);
@@ -104,23 +106,48 @@ export default async function ProjectPage({
                       </h2>
                     );
                   },
+
                   p: ({ children }) => (
                     <p className="mt-4 text-lg leading-relaxed text-zinc-300">
                       {children}
                     </p>
                   ),
-                  img: ({ src, alt }) => (
-                    <img
-                      src={src ?? ""}
-                      alt={alt ?? ""}
-                      className="mt-6 rounded-lg border border-white/10"
-                    />
+
+                  img: ({ src, alt, title }) => (
+                    <figure className="my-8 overflow-hidden rounded-lg border border-white/10 bg-[#11151a]">
+                      <img
+                        src={src ?? ""}
+                        alt={alt ?? ""}
+                        className="h-auto w-full object-cover"
+                      />
+
+                      {(alt || title) && (
+                        <figcaption className="border-t border-white/10 px-4 py-3 text-sm text-zinc-400">
+                          {title || alt}
+                        </figcaption>
+                      )}
+                    </figure>
                   ),
+
+                  video: ({ children, ...props }) => (
+                    <video
+                      {...props}
+                      controls
+                      muted
+                      loop
+                      playsInline
+                      className="my-8 w-full rounded-lg border border-white/10 bg-black"
+                    >
+                      {children}
+                    </video>
+                  ),
+
                   ul: ({ children }) => (
                     <ul className="mt-4 list-disc space-y-2 pl-6 text-lg leading-relaxed text-zinc-300">
                       {children}
                     </ul>
                   ),
+
                   strong: ({ children }) => (
                     <strong className="font-semibold text-white">
                       {children}
