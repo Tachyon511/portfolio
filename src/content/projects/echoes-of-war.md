@@ -15,11 +15,10 @@ order: 2
 
 ## Overview
 
-Kansavs Mom
-Hell yea 
+Serious empathy game developed for my bachelor thesis aimed at PTSD. 
 ## ale akoze co
 The project combines 3D modelling, animation logic, Unreal Engine workflows and technical problem solving into one compact prototype.
-
+![Surface-aligned movement debug](/projects/echoes-of-the-war/test.png)
 ## 3D Modelling
 
 The mech was created as a hard-surface asset with separate body and leg components. The design focuses on readable mechanical forms, strong silhouettes and clear articulation points that could later support animation and procedural movement.
