@@ -14,19 +14,24 @@ order: 2
 ---
 
 ## Overview
+Developed as a vertical slice for my bachelor thesis, Echoes of War is a serious empathy game aimed at PTSD and its symptoms. The game follows a lonely life of a WW1 soldier suffering serious symptoms.
 
-Serious empathy game developed for my bachelor thesis aimed at PTSD. 
-## ale akoze co
-The project combines 3D modelling, animation logic, Unreal Engine workflows and technical problem solving into one compact prototype.
-![Surface-aligned movement debug](/projects/echoes-of-the-war/test.png)
-## 3D Modelling
+The game was developed in Unreal Engine 5 with a combination of own and quixel assets. It focuses on storytelling and atmosphere building with dynamic cinematic sequences and narrative.
+## Game Design
+The game is set in 1922 after World War 1 and follows Harold Finch, a war veteran with significant PTSD symptoms. Harold lives a lonely life, accompanied only by his loved pet, a rat Ralph. The game follows Harold after the death of Ralph, which triggers severe symptoms for him.
 
-The mech was created as a hard-surface asset with separate body and leg components. The design focuses on readable mechanical forms, strong silhouettes and clear articulation points that could later support animation and procedural movement.
+The narrative of the game is non-linear with 2 flashback PTSD induced sequences. The focus of the game is on communicating a meaningful and believable experience aimed strengthening the empathy of the players people suffering from PTSD. The game mechanics remain pretty simple and consist mostly of exploration such as picking up keys and reading notes which guide the player forward in the game.
+![Surface-aligned movement debug](/projects/echoes-of-the-war/flashback01.png)
+## Environment Design
 
-## Animation & Movement
+The enviroment draws strongly on victorian architecture and props, with three distinct areas in the game: the house, the trench and the fields. Trench and the fields work as flashbacks where Harolds returns to in his mind while experiencing PTSD symptoms. The house is Harolds current living environment and serves as the foundation for the whole game. The environment was created mostly using quixel assets with some custom 3D models made by myself.
+![Surface-aligned movement debug](/projects/echoes-of-the-war/enviro01.png)
+![Surface-aligned movement debug](/projects/echoes-of-the-war/enviro02.png)
+
+## Trench Scene
 
 The movement system explores procedural leg placement, body stabilization and animation logic for a multi-legged character.
-
+![Surface-aligned movement debug](/projects/echoes-of-the-war/tank01.png)
 ## Control Rig
 
 The rigging setup uses Unreal Engine Control Rig to provide flexible control over the body and individual legs.
