@@ -1,5 +1,5 @@
 ---
-title: Incidental Minds Experience Report
+title: We Resist - Technical Art & Environment Work
 slug: incidental-minds-report
 category: Professional Experience
 description: A short report documenting my work as a 3D / Technical Artist focused on Unreal Engine implementation, environment assets, shaders and procedural tools.
