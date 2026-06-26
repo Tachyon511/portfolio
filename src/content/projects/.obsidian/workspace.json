@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "echoes-of-war.md",
+                "file": "Incidental Minds Report.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "echoes-of-war"
+              "title": "Incidental Minds Report"
             }
           }
         ],
@@ -200,14 +200,16 @@
   },
   "active": "080120038b795fc0",
   "lastOpenFiles": [
-    "batch-editing-plugin.md",
-    "Incidental Minds Report.md",
+    "opengl-renderer.md",
     "raise-the-stakes.md",
     "Sci-fi bunker.md",
+    "echoes-of-war.md",
+    "echoes-of-war – kópia.md",
+    "batch-editing-plugin.md",
+    "Incidental Minds Report.md",
     "Untitled.md",
     "Untitled.canvas",
     "raise-the-stakes – kópia.md",
-    "echoes-of-war.md",
     "EchoesOfTheWar_TrenchRenderv2.png",
     "Pasted image 20260622232753.png",
     "spider-mech.md",

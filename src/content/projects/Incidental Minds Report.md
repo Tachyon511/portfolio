@@ -35,7 +35,7 @@ Textures were created by other members of the team*
 ![Fence and environmental props models](/projects/we-resist/fences.png)
 ## Procedural Generation
 
-PCG was mainly used for the creation of fences and electric poles. The main aim was to provide level designers with effective and time-saving tools. The fences used varying levels of randomization. The planks of the wooden fences were modeled in multiple variations with various damage defects and every plank was being added individually allowing high levels of randomness. The fences included procedural spawning of NavLink proxies and colliders in order to enable NPCs to vault across them. They also included Landscape Patches making sure the landscape underneath was always in level with the fence.
+PCG was mainly used for the creation of fences and electric poles. The main aim was to provide level designers with effective and time-saving tools. The fences also included procedural spawning of NavLink proxies and colliders in order to enable NPCs to vault across them. They also included Landscape Patches making sure the landscape underneath was always in level with the fence.
 ![PCG tools overview](/projects/we-resist/pcg.png)
 
 <video src="/projects/we-resist/fencevideo.mp4" controls muted loop playsinline></video>
