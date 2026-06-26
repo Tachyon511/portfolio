@@ -2,9 +2,9 @@
 title: Raise the Stakes
 slug: raise-the-stakes
 category: Game Development
-description: Real-time Strategy game developed during a 48 hour gamejam.
-thumbnail: /hero-mech.png
-heroImage: /hero-mech.png
+description: Real-time Strategy game where you play as a vampire trying to defend his castle from an angry mob of villagers. Developed during a 48 hour gamejam.
+thumbnail: /projects/raise-the-stakes/thumbnail.png
+heroImage: /projects/raise-the-stakes/thumbnail.png
 tools:
   - Unreal Engine 5
   - Blender

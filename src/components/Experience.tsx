@@ -35,7 +35,7 @@ export default function Experience() {
             className="group relative block min-h-64 overflow-hidden border-t border-white/10 md:border-l md:border-t-0"
           >
             <img
-              src="/Trench.png"
+              src="/projects/we-resist/render02.png"
               alt="Incidental Minds report preview"
               className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
             />
