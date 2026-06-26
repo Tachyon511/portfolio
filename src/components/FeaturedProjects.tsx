@@ -20,7 +20,7 @@ function ProjectCard({ project }: { project: Project }) {
           <img
             src={project.thumbnail}
             alt={project.title}
-            className="h-40 w-full object-cover transition duration-300 group-hover:scale-105"
+            className="h-60 w-full object-cover transition duration-300 group-hover:scale-105"
           />
 
           <div className="absolute inset-0 flex items-center justify-center bg-black/0 opacity-0 transition duration-300 group-hover:bg-black/50 group-hover:opacity-100">

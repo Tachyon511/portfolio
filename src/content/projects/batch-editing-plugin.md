@@ -38,17 +38,15 @@ The property editing tool allows to batch edit asset properties of a specified c
 
 ## Material Instance Creation & Assignment
 
-With the utilization of a precise naming convention these tools let you create & assign Material Instances in a few clicks and works for both Static and Skeletal Meshes. The Material Instance creation requires setting up a parent material with Texture Samples as parameters. The tool maps texture groups and then creates Material Instances with their assigned textures.
+With the utilization of a naming convention these tools let you create & assign Material Instances in a few clicks and work for both Static and Skeletal Meshes. 
 
-The Material Assignment tool maps the slot names of the selected mesh and tries to find appropriate Material Instances in the current folder.
+The Material Instance creation requires setting up a parent material with Texture Samples as parameters. The tool maps texture groups and then creates Material Instances with their assigned textures.  
+  The Material Assignment tool maps the slot names of the selected mesh and tries to find appropriate Material Instances in the current folder.
 
-The project uses this naming convention:
-
-StaticMesh: SM_MeshID (SM_Drone)
-
-Texture: MeshID_SlotName_Type (Drone_Hull_Normal)
-
-Material Instance: MI_MeshID_SlotName (MI_Drone_Hull)
+The project uses this naming convention:  
+  StaticMesh: SM_MeshID (SM_Drone)
+  Texture: MeshID_SlotName_Type (Drone_Hull_Normal)
+  Material Instance: MI_MeshID_SlotName (MI_Drone_Hull)
 
 <video src="/projects/batch-edit-plugin/materials.mp4" controls muted loop playsinline></video>
 
@@ -67,10 +65,10 @@ This tool enables you to generate Shape-based or Convex collision for selected S
 ## LOD Generation
 This tool generates LODs for selected Static Meshes and provides modular UI to accommodate user-selected number of LODs. It provides control of PercentTriangles and ScreenSize for individual LODs as well as setting their LOD group.
 
-![](/projects/batch-edit-plugin/lod.png)
+![](/projects/batch-edit-plugin/lods.png)
 
 ## Technical Implementation
-The plugin is built around a main Editor Utility Widget with focus on modularity and flexibility while maintaining UE's gray/dark colour pallete. It combines the use of Blueprints and Python while leveraging JSON-based data parsing for efficient data transfer.
+The plugin is built as a Editor Utility Widget framework with focus on the UI's modularity and flexibility. It combines the use of Blueprints and Python while leveraging JSON-based data parsing for efficient data transfer.
 
 Some tools like the Batch Property Editing use multiple Python scripts, while some like LOD generation use Blueprints only. The pipeline varies for each tool but a common approach is:
 

@@ -9,7 +9,7 @@ import {
 } from "../../../lib/projects";
 
 import ProjectImage from "../../../components/ProjectImage";
-
+import ProjectVideo from "../../../components/ProjectVideo";
 const toolIcons: Record<string, string> = {
   "Unreal Engine 5": "/skills/unreal.png",
   Blender: "/skills/blender.png",
@@ -122,17 +122,11 @@ export default async function ProjectPage({
                     />
                   ),
 
-                  video: ({ children, ...props }) => (
-                    <video
-                      {...props}
-                      controls
-                      muted
-                      loop
-                      playsInline
-                      className="my-8 w-full rounded-lg border border-white/10 bg-black"
-                    >
-                      {children}
-                    </video>
+                 video: ({ src, title }) => (
+                    <ProjectVideo
+                      src={typeof src === "string" ? src : ""}
+                      title={typeof title === "string" ? title : undefined}
+                    />
                   ),
 
                   ul: ({ children }) => (
@@ -153,20 +147,46 @@ export default async function ProjectPage({
             </div>
 
             <aside className="hidden lg:block">
-              <div className="sticky top-10 rounded-lg border border-white/10 bg-[#11151a]/90 p-5 backdrop-blur">
-                <p className="font-semibold">Outline</p>
+              <div className="sticky top-10 space-y-5">
+                <div className="rounded-lg border border-white/10 bg-[#11151a]/90 p-5 backdrop-blur">
+                  <p className="font-semibold">Outline</p>
 
-                <nav className="mt-4 space-y-3">
-                  {project.headings.map((heading) => (
-                    <a
-                      key={heading.id}
-                      href={`#${heading.id}`}
-                      className="block text-sm text-zinc-400 transition hover:text-indigo-400"
-                    >
-                      {heading.title}
-                    </a>
-                  ))}
-                </nav>
+                  <nav className="mt-4 space-y-3">
+                    {project.headings.map((heading) => (
+                      <a
+                        key={heading.id}
+                        href={`#${heading.id}`}
+                        className="block text-sm text-zinc-400 transition hover:text-indigo-400"
+                      >
+                        {heading.title}
+                      </a>
+                    ))}
+                  </nav>
+                </div>
+
+                <div className="rounded-lg border border-white/10 bg-[#11151a]/90 p-5 backdrop-blur">
+                  <p className="font-semibold">Projects</p>
+
+                  <nav className="mt-4 space-y-3">
+                    {getAllProjects().map((otherProject) => {
+                      const isCurrentProject = otherProject.slug === project.slug;
+
+                      return (
+                        <a
+                          key={otherProject.slug}
+                          href={`/projects/${otherProject.slug}`}
+                          className={`block text-sm transition ${
+                            isCurrentProject
+                              ? "font-semibold text-indigo-400"
+                              : "text-zinc-400 hover:text-indigo-400"
+                          }`}
+                        >
+                          {otherProject.title}
+                        </a>
+                      );
+                    })}
+                  </nav>
+                </div>
               </div>
             </aside>
           </div>

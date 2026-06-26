@@ -43,11 +43,6 @@ export default function Contact() {
               <span className="font-semibold text-white">ArtStation: </span>
               artstation.com/maxim_brna
             </p>
-
-            <p>
-              <span className="font-semibold text-white">LinkedIn: </span>
-              linkedin.com/in/maximbrna
-            </p>
           </div>
         </div>
       </div>

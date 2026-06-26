@@ -2,7 +2,7 @@
 title: Raise the Stakes
 slug: raise-the-stakes
 category: Game Development
-description: Real-time Strategy game where you play as a vampire trying to defend his castle from an angry mob of villagers. Developed during a 48 hour gamejam.
+description: Real-time Castle Defense Strategy game where you play as a vampire trying to defend his castle from an angry mob of villagers. Developed during a 48 hour gamejam.
 thumbnail: /projects/raise-the-stakes/thumbnail.png
 heroImage: /projects/raise-the-stakes/thumbnail.png
 tools:
@@ -14,22 +14,37 @@ order: 99
 
 ## Overview
 
-Spider Mech is a technical art prototype focused on procedural movement and animation systems for a multi-legged mechanical character. The goal of the project was to explore how a hard-surface asset can be built, rigged and presented as a functional real-time system rather than only as a static model.
+In Raise the Stakes, the player tried to defend his castle by building towers, while enduring waves of enemies. The game was created during the 48 hour Klagenfurt GSE Jam, hosted by my faculty, with subsequent bug fixes and improvements after the gamejam.
 
-The project combines 3D modelling, animation logic, Unreal Engine workflows and technical problem solving into one compact prototype.
+The game was developed in Unreal Engine 5.6 and I acted as a head programmer, while also managing shaders and optimization. The other members of the team took care of level & game design.
 
-## 3D Modelling
+The project uses mainly downloaded asset packs with the addition of few miscellaneous props I modelled.*
+<video
+  src="/projects/raise-the-stakes/gameplay-video.mp4"
+  title="Gameplay preview"  controls  muted  loop playsinline></video>
+## Programming
+The development approach & proccess was heavily influenced by the gamejam time restriction, which meant the code had to be simple, easily iterable and repeatable. The programming was done via Blueprints.
 
-The mech was created as a hard-surface asset with separate body and leg components. The design focuses on readable mechanical forms, strong silhouettes and clear articulation points that could later support animation and procedural movement.
+![Graph Code Overview](/projects/raise-the-stakes/graph.png)
 
-## Animation & Movement
+## Shaders & Visual Effects
 
-The movement system explores procedural leg placement, body stabilization and animation logic for a multi-legged character.
+<video
+  src="/projects/raise-the-stakes/dynamic-shaders.mp4"
+  title="Dynamic shaders: Magic Tower and Build Overlay Material"  controls  muted  loop playsinline></video>
 
-## Control Rig
+<video
+  src="/projects/raise-the-stakes/bat-tower-video.mp4"
+  title="Bat Tower attack"  controls  muted  loop playsinline></video>
+![](/projects/raise-the-stakes/bat-attack.png)
+![Landscape Material with UV bombing & slope mask](/projects/raise-the-stakes/landscape.png)
 
-The rigging setup uses Unreal Engine Control Rig to provide flexible control over the body and individual legs.
+## Opimization
+The project required the use of a high number of Skeletal Meshes. Due to this we had to simplify other parts of the project to keep the scene performant and stable.
 
-## Result
+Optimizations:
+- Significant use of LODs
+- Lumen quality reduction
+- Use of a Local Fog Volume instead of Volumetric Fog
+- Use of a Sky Light cubemap as a primary light source instead of a Directional Light
 
-The final prototype works as both a portfolio asset and a technical breakdown of my workflow across modelling, rigging, procedural animation and Unreal Engine implementation.

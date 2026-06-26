@@ -13,15 +13,30 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "raise-the-stakes.md",
+                "file": "Incidental Minds Report.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "raise-the-stakes"
+              "title": "Incidental Minds Report"
+            }
+          },
+          {
+            "id": "080120038b795fc0",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Sci-fi bunker.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Sci-fi bunker"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -183,15 +198,18 @@
       "bases:Create new base": false
     }
   },
-  "active": "25676acb83dc7f32",
+  "active": "080120038b795fc0",
   "lastOpenFiles": [
-    "Incidental Minds Report.md",
+    "Untitled.md",
+    "Untitled.canvas",
     "raise-the-stakes.md",
+    "Sci-fi bunker.md",
+    "raise-the-stakes – kópia.md",
+    "Incidental Minds Report.md",
     "batch-editing-plugin.md",
     "echoes-of-war.md",
     "EchoesOfTheWar_TrenchRenderv2.png",
     "Pasted image 20260622232753.png",
-    "Untitled.canvas",
     "spider-mech.md",
     "RenderingMap.0000_(7).png",
     "ArthurianPrototype.md",
