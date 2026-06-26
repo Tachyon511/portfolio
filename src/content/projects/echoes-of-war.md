@@ -1,16 +1,16 @@
 ---
-title: "Echoes of War"
-slug: "echoes-of-war"
-category: "Game Development"
-description: "A vertical slice development for my bachelor thesis focused on Serious Games and PTSD. Implemented in UE5 with focus on storyteling and building empathy."
-thumbnail: "/Trench.png"
-heroImage: "/Trench.png"
+title: Echoes of War
+slug: echoes-of-war
+category: Game Development
+description: A vertical slice development for my bachelor thesis focused on Serious Games and PTSD. Implemented in UE5 with focus on storyteling and building empathy.
+thumbnail: /Trench.png
+heroImage: /Trench.png
 tools:
-  - "Unreal Engine 5"
-  - "Blender"
-  - "Substance Painter"
+  - Unreal Engine 5
+  - Blender
+  - Substance Painter
 featured: true
-order: 2
+order: 1
 ---
 
 ## Overview

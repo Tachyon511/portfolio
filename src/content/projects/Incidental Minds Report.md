@@ -9,7 +9,7 @@ tools:
   - Unreal Engine 5
   - Blender
   - Substance Painter
-order: 99
+order: 3
 ---
 
 ## Overview
