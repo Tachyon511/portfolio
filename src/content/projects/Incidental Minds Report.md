@@ -2,7 +2,7 @@
 title: We Resist - Technical Art & Environment Work
 slug: incidental-minds-report
 category: Professional Experience
-description: A short report documenting my work as a 3D / Technical Artist focused on Unreal Engine implementation, environment assets, shaders and procedural tools.
+description: Report documenting my work as a 3D / Technical Artist within Unreal Engine 5 pipeline, where I created 3D assets, procedural tools & shaders.
 thumbnail: /projects/we-resist/render02.png
 heroImage: /projects/we-resist/render02.png
 tools:
