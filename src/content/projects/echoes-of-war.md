@@ -11,6 +11,9 @@ tools:
   - Substance Painter
 featured: true
 order: 1
+tags:
+  - Environment_Design
+  - 3D_Modelling
 ---
 
 ## Overview

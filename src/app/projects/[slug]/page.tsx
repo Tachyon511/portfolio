@@ -1,15 +1,22 @@
+import fs from "fs";
+import path from "path";
 import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
+
 import {
   getAllProjects,
   getProjectBySlug,
   slugify,
 } from "../../../lib/projects";
 
+import ProjectGallery, {
+  type GalleryMedia,
+} from "../../../components/ProjectGallery";
 import ProjectImage from "../../../components/ProjectImage";
 import ProjectVideo from "../../../components/ProjectVideo";
+
 const toolIcons: Record<string, string> = {
   "Unreal Engine 5": "/skills/unreal.png",
   Blender: "/skills/blender.png",
@@ -17,6 +24,90 @@ const toolIcons: Record<string, string> = {
   Python: "/skills/python.png",
   "C++": "/skills/cpp.png",
 };
+
+const imageExtensions = new Set([
+  ".jpg",
+  ".jpeg",
+  ".png",
+  ".webp",
+  ".avif",
+  ".gif",
+]);
+
+const videoExtensions = new Set([
+  ".mp4",
+  ".webm",
+]);
+
+function getProjectGallery(slug: string): GalleryMedia[] {
+  const galleryDirectory = path.join(
+    process.cwd(),
+    "public",
+    "projects",
+    slug,
+    "gallery"
+  );
+
+  if (!fs.existsSync(galleryDirectory)) {
+    return [];
+  }
+
+  const files = fs
+    .readdirSync(galleryDirectory)
+    .filter((file) => {
+      const extension = path.extname(file).toLowerCase();
+      const isSupported =
+        imageExtensions.has(extension) || videoExtensions.has(extension);
+
+      const isPoster = /-poster\.(jpg|jpeg|png|webp|avif)$/i.test(file);
+
+      return isSupported && !isPoster;
+    })
+    .sort((a, b) =>
+      a.localeCompare(b, undefined, {
+        numeric: true,
+        sensitivity: "base",
+      })
+    );
+
+  return files.map((file) => {
+    const extension = path.extname(file).toLowerCase();
+    const isVideo = videoExtensions.has(extension);
+    const fileNameWithoutExtension = path.basename(file, extension);
+
+    let poster: string | undefined;
+
+    if (isVideo) {
+      const possiblePosterExtensions = [
+        ".webp",
+        ".png",
+        ".jpg",
+        ".jpeg",
+        ".avif",
+      ];
+
+      const foundPosterExtension = possiblePosterExtensions.find((posterExtension) =>
+        fs.existsSync(
+          path.join(
+            galleryDirectory,
+            `${fileNameWithoutExtension}-poster${posterExtension}`
+          )
+        )
+      );
+
+      if (foundPosterExtension) {
+        poster = `/projects/${slug}/gallery/${fileNameWithoutExtension}-poster${foundPosterExtension}`;
+      }
+    }
+
+    return {
+      src: `/projects/${slug}/gallery/${file}`,
+      type: isVideo ? "video" : "image",
+      poster,
+      alt: `${slug.replaceAll("-", " ")} gallery item`,
+    };
+  });
+}
 
 export function generateStaticParams() {
   return getAllProjects().map((project) => ({
@@ -36,6 +127,22 @@ export default async function ProjectPage({
     notFound();
   }
 
+  console.log("PROJECT:", project?.slug);
+console.log("TAGS:", project?.tags);
+
+  const folderGallery = getProjectGallery(project.slug);
+
+  const galleryMedia: GalleryMedia[] =
+    folderGallery.length > 0
+      ? folderGallery
+      : [
+          {
+            src: project.heroImage,
+            type: "image",
+            alt: project.title,
+          },
+        ];
+
   return (
     <main className="min-h-screen bg-[#05070a] text-white">
       <div className="mx-auto max-w-6xl px-6 py-10">
@@ -48,10 +155,9 @@ export default async function ProjectPage({
 
         <article className="mt-8">
           <header className="overflow-hidden rounded-lg border border-white/10 bg-[#11151a]">
-            <img
-              src={project.heroImage}
-              alt={project.title}
-              className="h-[280px] w-full object-cover"
+            <ProjectGallery
+              media={galleryMedia}
+              projectTitle={project.title}
             />
 
             <div className="p-8">
@@ -65,7 +171,20 @@ export default async function ProjectPage({
                 {project.description}
               </p>
 
-              <div className="mt-2 flex flex-wrap items-center gap-3">
+              {project.tags?.length > 0 && (
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {project.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-xs font-medium text-zinc-300"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              )}
+
+              <div className="mt-4 flex flex-wrap items-center gap-3">
                 {project.tools.map((tool) => {
                   const icon = toolIcons[tool];
 
@@ -122,7 +241,7 @@ export default async function ProjectPage({
                     />
                   ),
 
-                 video: ({ src, title }) => (
+                  video: ({ src, title }) => (
                     <ProjectVideo
                       src={typeof src === "string" ? src : ""}
                       title={typeof title === "string" ? title : undefined}
@@ -169,7 +288,8 @@ export default async function ProjectPage({
 
                   <nav className="mt-4 space-y-3">
                     {getAllProjects().map((otherProject) => {
-                      const isCurrentProject = otherProject.slug === project.slug;
+                      const isCurrentProject =
+                        otherProject.slug === project.slug;
 
                       return (
                         <a

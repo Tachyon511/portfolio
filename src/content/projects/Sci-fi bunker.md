@@ -13,7 +13,7 @@ order: 99
 ---
 
 ## Overview
-This environment was created based on a description of a bunker deep behind enemy lines in the dystopian sci-fi book series Altered Carbon. The bunker i split into 3 sections with a dedicated purpose and military functionality in mind, creating a believable environment.
+This environment was created based on a description of a bunker deep behind enemy lines in the dystopian sci-fi book series Altered Carbon. The bunker is split into 3 sections with a dedicated purpose and military functionality in mind, creating a believable environment.
 
 Models were created and textured in Blender and the rendering was done in Unreal Engine 5.
 ![Concept sheet documenting my design & blockout process](/projects/scifi-bunker/concept-sheet.png)

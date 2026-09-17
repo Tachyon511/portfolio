@@ -39,6 +39,19 @@ function ProjectCard({ project }: { project: Project }) {
             {project.description}
           </p>
 
+          {project.tags.length > 0 && (
+            <div className="mt-4 flex flex-wrap gap-2">
+              {project.tags.slice(0, 3).map((tag) => (
+                <span
+                  key={tag}
+                  className="border border-indigo-400/30 bg-indigo-500/10 px-2 py-1 text-[10px] font-medium uppercase tracking-wide text-indigo-300"
+                >
+                  {tag.replaceAll("_", " ")}
+                </span>
+              ))}
+            </div>
+          )}
+
           {project.tools.length > 0 && (
             <div className="mt-4 flex flex-wrap items-center gap-2">
               {project.tools.map((tool) => {

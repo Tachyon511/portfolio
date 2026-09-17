@@ -43,11 +43,6 @@ With the utilization of a naming convention these tools let you create & assign 
 The Material Instance creation requires setting up a parent material with Texture Samples as parameters. The tool maps texture groups and then creates Material Instances with their assigned textures.  
   The Material Assignment tool maps the slot names of the selected mesh and tries to find appropriate Material Instances in the current folder.
 
-The project uses this naming convention:  
-  StaticMesh: SM_MeshID (SM_Drone)
-  Texture: MeshID_SlotName_Type (Drone_Hull_Normal)
-  Material Instance: MI_MeshID_SlotName (MI_Drone_Hull)
-
 <video src="/projects/batch-edit-plugin/materials.mp4" controls muted loop playsinline></video>
 
 ## Asset Validation & Settings Overview
@@ -76,7 +71,7 @@ Some tools like the Batch Property Editing use multiple Python scripts, while so
 
 The plugin uses Unreal Engine’s Editor Utility Library, Asset Registry, and Static Mesh Editor Subsystem to access and modify editor-side asset data.  
 
-For collision tools, selected Static Meshes are accessed through their `body_setup` data, which exposes the collision configuration used by the mesh. This allows the tool to inspect and update collision settings, remove existing simple collision, and generate new collision setups through the editor workflow. The code below shows the implementation of collision settings editing tool.
+For collision tools, selected Static Meshes are accessed through their `body_setup` data, which exposes the collision configuration used by the mesh. This allows the tool to inspect and update collision settings, remove existing simple collision, and generate new collision setups through the editor workflow. The code below shows the implementation of the collision settings editing tool.
 
 ![Implementation of collision settings](/projects/batch-edit-plugin/collision-code.png)
 

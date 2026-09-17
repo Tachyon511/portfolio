@@ -1,6 +1,6 @@
 ---
-title: We Resist - Technical Art & Environment Work
-slug: incidental-minds-report
+title: We Resist
+slug: we-resist
 category: Professional Experience
 description: Report documenting my work as a 3D / Technical Artist within Unreal Engine 5 pipeline, where I created 3D assets, procedural tools & shaders.
 thumbnail: /projects/we-resist/render02.png
@@ -10,13 +10,15 @@ tools:
   - Blender
   - Substance Painter
 order: 3
+tags:
+  - 3D_Modelling
+  - Procedural_Generation
+  - Shaders
 ---
 
 ## Overview
 
 This report documents selected work and responsibilities from my 3D / Technical Artist experience at Incidental Minds. I initially joined the project as a 3D artist and later transitioned to a technical artist role, creating procedural tools and shaders while also troubleshooting various errors in the Unreal Engine 5 pipeline. I also carried out on-site reference gathering in the area where the game was set, focusing on historical architectural details and elements.
-
-We Resist is a third-person, story-driven game set in Slovakia in 1942. It follows a group of guerrilla fighters resisting the Nazi regime. The game combines a strategic layer, where players build camps, gather resources, and manage soldiers, with tactical third-person missions that give players direct control over their squad.
 
 The project focuses on historical authenticity in both its narrative and worldbuilding. It was developed into a playable demo with financial support from the Slovak Arts Council.
 ![](/projects/we-resist/render01.png)

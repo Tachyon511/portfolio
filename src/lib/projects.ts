@@ -12,6 +12,7 @@ export type Project = {
   thumbnail: string;
   heroImage: string;
   tools: string[];
+  tags: string[];
   featured: boolean;
   order: number;
   content: string;
@@ -29,6 +30,7 @@ type ProjectFrontmatter = {
   thumbnail?: string;
   heroImage?: string;
   tools?: string[];
+  tags?: string[];
   featured?: boolean;
   order?: number;
 };
@@ -82,7 +84,8 @@ export function getAllProjects(): Project[] {
       description: frontmatter.description ?? "",
       thumbnail: frontmatter.thumbnail ?? "/project-placeholder.jpg",
       heroImage: frontmatter.heroImage ?? "/project-placeholder.jpg",
-      tools: frontmatter.tools ?? [],
+      tools: Array.isArray(frontmatter.tools) ? frontmatter.tools : [],
+      tags: Array.isArray(frontmatter.tags) ? frontmatter.tags : [],
       featured: frontmatter.featured ?? false,
       order: frontmatter.order ?? 999,
       content,
