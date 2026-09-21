@@ -2,7 +2,7 @@
 title: We Resist
 slug: we-resist
 category: Professional Experience
-description: Report documenting my work as a 3D / Technical Artist within Unreal Engine 5 pipeline, where I created 3D assets, procedural tools & shaders.
+description: Report documenting my work as a 3D / Technical Artist at Incidental Minds.
 thumbnail: /projects/we-resist/render02.png
 heroImage: /projects/we-resist/render02.png
 tools:
