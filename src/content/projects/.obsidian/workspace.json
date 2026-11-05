@@ -13,12 +13,26 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Incidental Minds Report.md",
+                "file": "echoes-of-war.md",
                 "mode": "source",
-                "source": false
+                "source": true
               },
               "icon": "lucide-file",
-              "title": "Incidental Minds Report"
+              "title": "echoes-of-war"
+            }
+          },
+          {
+            "id": "e7313e21242aa1ba",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "opengl-renderer.md",
+                "mode": "source",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "opengl-renderer"
             }
           },
           {
@@ -27,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Incidental Minds Report.md",
+                "file": "echoes-of-war.md",
                 "mode": "source",
-                "source": false
+                "source": true
               },
               "icon": "lucide-file",
-              "title": "Incidental Minds Report"
+              "title": "echoes-of-war"
             }
           }
         ],
@@ -181,8 +195,21 @@
               "icon": "lucide-list",
               "title": "Outline of spider-mech"
             }
+          },
+          {
+            "id": "f9f25403092b56c8",
+            "type": "leaf",
+            "state": {
+              "type": "file-properties",
+              "state": {
+                "file": "opengl-renderer.md"
+              },
+              "icon": "lucide-info",
+              "title": "File properties"
+            }
           }
-        ]
+        ],
+        "currentTab": 5
       }
     ],
     "direction": "horizontal",
@@ -200,17 +227,17 @@
       "bases:Create new base": false
     }
   },
-  "active": "080120038b795fc0",
+  "active": "e7313e21242aa1ba",
   "lastOpenFiles": [
     "Sci-fi bunker.md",
-    "batch-editing-plugin.md",
-    "Incidental Minds Report.md",
-    "echoes-of-war.md",
-    "opengl-renderer.md",
     "raise-the-stakes.md",
-    "echoes-of-war – kópia.md",
-    "Untitled.md",
+    "Incidental Minds Report.md",
+    "batch-editing-plugin.md",
+    "echoes-of-war.md",
+    "Medieval Modular Architecture Kit.md",
+    "opengl-renderer.md",
     "Untitled.canvas",
+    "echoes-of-war – kópia.md",
     "raise-the-stakes – kópia.md",
     "EchoesOfTheWar_TrenchRenderv2.png",
     "Pasted image 20260622232753.png",

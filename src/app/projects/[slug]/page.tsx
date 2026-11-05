@@ -16,6 +16,7 @@ import ProjectGallery, {
 } from "../../../components/ProjectGallery";
 import ProjectImage from "../../../components/ProjectImage";
 import ProjectVideo from "../../../components/ProjectVideo";
+import { parseProjectBlocks } from "../../../lib/project-blocks";
 
 const toolIcons: Record<string, string> = {
   "Unreal Engine 5": "/skills/unreal.png",
@@ -109,6 +110,20 @@ function getProjectGallery(slug: string): GalleryMedia[] {
   });
 }
 
+// Identify image/video-only columns. They fill the full grid cell, while
+// text columns keep their padding and grow naturally without scrollbars.
+function isMediaOnly(content: string): boolean {
+  const text = content.trim();
+  if (!text) return false;
+
+  const withoutMedia = text
+    .replace(/!\[[^\]]*\]\([^)]+\)/g, "")
+    .replace(/<video\b[\s\S]*?<\/video\s*>/gi, "")
+    .trim();
+
+  return withoutMedia.length === 0;
+}
+
 export function generateStaticParams() {
   return getAllProjects().map((project) => ({
     slug: project.slug,
@@ -127,9 +142,8 @@ export default async function ProjectPage({
     notFound();
   }
 
-  console.log("PROJECT:", project?.slug);
-console.log("TAGS:", project?.tags);
 
+  const contentBlocks = parseProjectBlocks(project.content);
   const folderGallery = getProjectGallery(project.slug);
 
   const galleryMedia: GalleryMedia[] =
@@ -145,7 +159,7 @@ console.log("TAGS:", project?.tags);
 
   return (
     <main className="min-h-screen bg-[#05070a] text-white">
-      <div className="mx-auto max-w-6xl px-6 py-10">
+      <div className="mx-auto max-w-[1040px] px-4 pt-4 pb-10 sm:px-6 sm:pt-5 sm:pb-10">
         <a
           href="/"
           className="sticky top-0 z-50 inline-block rounded-md border border-white/10 bg-[#11151a]/90 px-4 py-2 text-sm font-semibold text-indigo-400 backdrop-blur transition hover:border-indigo-500/80 hover:text-indigo-300"
@@ -153,21 +167,21 @@ console.log("TAGS:", project?.tags);
           ← Back to homepage
         </a>
 
-        <article className="mt-8">
+        <article className="mt-4">
           <header className="overflow-hidden rounded-lg border border-white/10 bg-[#11151a]">
             <ProjectGallery
               media={galleryMedia}
               projectTitle={project.title}
             />
 
-            <div className="p-8">
+            <div className="p-5 sm:p-7">
               <p className="text-sm text-zinc-400">{project.category}</p>
 
-              <h1 className="mt-2 text-5xl font-semibold tracking-tight">
+              <h1 className="mt-2 text-3xl font-semibold tracking-tight sm:text-4xl">
                 {project.title}
               </h1>
 
-              <p className="mt-5 max-w-3xl text-lg leading-relaxed text-zinc-300">
+              <p className="mt-4 max-w-3xl text-base leading-relaxed text-zinc-300">
                 {project.description}
               </p>
 
@@ -176,9 +190,9 @@ console.log("TAGS:", project?.tags);
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-xs font-medium text-zinc-300"
+                      className="border border-indigo-400/25 bg-indigo-500/10 px-2 py-1 text-xs font-medium text-indigo-300"
                     >
-                      {tag}
+                      {tag.replaceAll("_", " ")}
                     </span>
                   ))}
                 </div>
@@ -208,110 +222,172 @@ console.log("TAGS:", project?.tags);
             </div>
           </header>
 
-          <div className="mt-10 grid gap-10 lg:grid-cols-[1fr_240px]">
-            <div className="max-w-3xl">
-              <ReactMarkdown
-                remarkPlugins={[remarkGfm]}
-                rehypePlugins={[rehypeRaw]}
-                components={{
-                  h2: ({ children }) => {
-                    const text = String(children);
-                    const id = slugify(text);
+          {/* Full-width project content: no permanent right sidebar. */}
+          <div className="mt-7 min-w-0">
+            {contentBlocks.map((block, index) => {
+              if (block.type === "markdown") {
+                return (
+                  <div key={index} className="w-full min-w-0">
+                    <ProjectMarkdown content={block.content} />
+                  </div>
+                );
+              }
 
-                    return (
-                      <h2
-                        id={id}
-                        className="scroll-mt-24 mt-12 text-3xl font-semibold first:mt-0"
-                      >
-                        {children}
-                      </h2>
-                    );
-                  },
+              const layoutIndex = contentBlocks
+                .slice(0, index)
+                .filter((item) => item.type !== "markdown").length;
+              const tone = layoutIndex % 2 === 0
+                ? "bg-[#101419]"
+                : "bg-[#171b21]";
 
-                  p: ({ children }) => (
-                    <p className="mt-4 text-lg leading-relaxed text-zinc-300">
-                      {children}
-                    </p>
-                  ),
+              if (block.type === "hero") {
+                return (
+                  <section
+                    key={index}
+                    className={`my-4 aspect-video w-full overflow-hidden rounded-lg border border-white/10 ${tone}`}
+                  >
+                    <div className="h-full min-h-0 w-full">
+                      <ProjectMarkdown content={block.content} embedded />
+                    </div>
+                  </section>
+                );
+              }
 
-                  img: ({ src, alt }) => (
-                    <ProjectImage
-                      src={typeof src === "string" ? src : ""}
-                      alt={alt ?? ""}
-                    />
-                  ),
+              // Split panels stretch to the height of the longer text column.
+              // Crop images only when paired with text; image/image pairs
+              // and standalone images keep their original object-contain fit.
+              const leftMediaOnly = isMediaOnly(block.left);
+              const rightMediaOnly = isMediaOnly(block.right);
 
-                  video: ({ src, title }) => (
-                    <ProjectVideo
-                      src={typeof src === "string" ? src : ""}
-                      title={typeof title === "string" ? title : undefined}
-                    />
-                  ),
+              return (
+                <section
+                  key={index}
+                  className={`my-4 grid overflow-hidden rounded-lg border border-white/10 md:grid-cols-2 ${tone}`}
+                >
+                  <div
+                    className={`relative min-w-0 border-b border-white/10 md:border-b-0 md:border-r ${
+                      leftMediaOnly
+                        ? "overflow-hidden bg-black"
+                        : "p-4 md:p-5"
+                    }`}
+                  >
+                    {leftMediaOnly ? (
+                      <>
+                        {/* The spacer sets the minimum 16:9 size. Grid stretch
+                            makes this panel taller when the text needs it. */}
+                        <div aria-hidden="true" className="aspect-video w-full" />
+                        <div className="absolute inset-0">
+                          <ProjectMarkdown content={block.left} embedded cropImages={!rightMediaOnly} />
+                        </div>
+                      </>
+                    ) : (
+                      <ProjectMarkdown content={block.left} />
+                    )}
+                  </div>
 
-                  ul: ({ children }) => (
-                    <ul className="mt-4 list-disc space-y-2 pl-6 text-lg leading-relaxed text-zinc-300">
-                      {children}
-                    </ul>
-                  ),
-
-                  strong: ({ children }) => (
-                    <strong className="font-semibold text-white">
-                      {children}
-                    </strong>
-                  ),
-                }}
-              >
-                {project.content}
-              </ReactMarkdown>
-            </div>
-
-            <aside className="hidden lg:block">
-              <div className="sticky top-10 space-y-5">
-                <div className="rounded-lg border border-white/10 bg-[#11151a]/90 p-5 backdrop-blur">
-                  <p className="font-semibold">Outline</p>
-
-                  <nav className="mt-4 space-y-3">
-                    {project.headings.map((heading) => (
-                      <a
-                        key={heading.id}
-                        href={`#${heading.id}`}
-                        className="block text-sm text-zinc-400 transition hover:text-indigo-400"
-                      >
-                        {heading.title}
-                      </a>
-                    ))}
-                  </nav>
-                </div>
-
-                <div className="rounded-lg border border-white/10 bg-[#11151a]/90 p-5 backdrop-blur">
-                  <p className="font-semibold">Projects</p>
-
-                  <nav className="mt-4 space-y-3">
-                    {getAllProjects().map((otherProject) => {
-                      const isCurrentProject =
-                        otherProject.slug === project.slug;
-
-                      return (
-                        <a
-                          key={otherProject.slug}
-                          href={`/projects/${otherProject.slug}`}
-                          className={`block text-sm transition ${
-                            isCurrentProject
-                              ? "font-semibold text-indigo-400"
-                              : "text-zinc-400 hover:text-indigo-400"
-                          }`}
-                        >
-                          {otherProject.title}
-                        </a>
-                      );
-                    })}
-                  </nav>
-                </div>
-              </div>
-            </aside>
+                  <div
+                    className={`relative min-w-0 ${
+                      rightMediaOnly
+                        ? "overflow-hidden bg-black"
+                        : "p-4 md:p-5"
+                    }`}
+                  >
+                    {rightMediaOnly ? (
+                      <>
+                        <div aria-hidden="true" className="aspect-video w-full" />
+                        <div className="absolute inset-0">
+                          <ProjectMarkdown content={block.right} embedded cropImages={!leftMediaOnly} />
+                        </div>
+                      </>
+                    ) : (
+                      <ProjectMarkdown content={block.right} />
+                    )}
+                  </div>
+                </section>
+              );
+            })}
           </div>
         </article>
       </div>
     </main>
+  );
+}
+
+function ProjectMarkdown({
+  content,
+  embedded = false,
+  cropImages = false,
+}: {
+  content: string;
+  embedded?: boolean;
+  cropImages?: boolean;
+}) {
+  return (
+    <ReactMarkdown
+      remarkPlugins={[remarkGfm]}
+      rehypePlugins={[rehypeRaw]}
+      components={{
+        h2: ({ children }) => {
+          const text = String(children);
+          return (
+            <h2 id={slugify(text)} className="scroll-mt-24 mt-8 text-2xl font-semibold first:mt-0">
+              {children}
+            </h2>
+          );
+        },
+        h3: ({ children }) => <h3 className="mt-5 text-lg font-semibold">{children}</h3>,
+        p: ({ node, children }) => {
+          // Markdown normally wraps images in paragraphs. A div is needed for
+          // interactive media components without invalid <p><button> nesting.
+          const hasMedia = node?.children?.some(
+            (child) => child.type === "element" && (child.tagName === "img" || child.tagName === "video")
+          );
+          return hasMedia ? (
+            <div className={embedded ? "h-full" : "mt-4"}>{children}</div>
+          ) : (
+            <p className="mt-3 text-base leading-relaxed text-zinc-300 first:mt-0">{children}</p>
+          );
+        },
+        img: ({ src, alt }) => (
+          <ProjectImage src={typeof src === "string" ? src : ""} alt={alt ?? ""} embedded={embedded} cover={cropImages} />
+        ),
+        video: ({ src, title, poster }) =>
+          embedded ? (
+            // The 16:9 panel is sized by the parent, not by source video metadata.
+            <span className="relative block h-full w-full overflow-hidden bg-black">
+              <video
+                src={typeof src === "string" ? src : ""}
+                poster={typeof poster === "string" ? poster : undefined}
+                controls
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                className="absolute inset-0 h-full w-full object-contain"
+              />
+              {typeof title === "string" && title && (
+                <span className="pointer-events-none absolute left-3 top-3 rounded bg-black/65 px-3 py-1 text-xs text-white">
+                  {title}
+                </span>
+              )}
+            </span>
+          ) : (
+            <ProjectVideo
+              src={typeof src === "string" ? src : ""}
+              title={typeof title === "string" ? title : undefined}
+              poster={typeof poster === "string" ? poster : undefined}
+            />
+          ),
+        ul: ({ children }) => (
+          <ul className="mt-3 list-disc space-y-1 pl-6 text-base leading-relaxed text-zinc-300">{children}</ul>
+        ),
+        ol: ({ children }) => (
+          <ol className="mt-3 list-decimal space-y-1 pl-6 text-base leading-relaxed text-zinc-300">{children}</ol>
+        ),
+        strong: ({ children }) => <strong className="font-semibold text-white">{children}</strong>,
+      }}
+    >
+      {content}
+    </ReactMarkdown>
   );
 }

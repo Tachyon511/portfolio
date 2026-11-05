@@ -19,16 +19,12 @@ export default function Hero() {
       <div className="relative z-10 flex min-h-[500px] max-w-md flex-col justify-end px-10 pb-8">
         <h2 className="text-5xl font-semibold tracking-tight">Maxim Brna</h2>
 
-        <p className="mt-4 text-xl text-zinc-200">
-          Game Development student focused on
-        </p>
-
-        <p className="mt-1 text-3xl font-semibold tracking-tight text-indigo-500">
-          3D &amp; Technical Art
+        <p className="mt-3 text-3xl font-semibold tracking-tight text-indigo-500">
+          3D &amp; Technical Artist
         </p>
 
         <p className="mt-4 text-zinc-400">
-          Based in Klagenfurt, Austria.
+          Currently Based in Newcastle Upon Tyne, United Kingdom.
         </p>
 
         <a

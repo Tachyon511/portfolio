@@ -8,7 +8,7 @@ heroImage: /projects/opengl-renderer/thumbnail.png
 tools:
   - C++
 featured: true
-order: 99
+order: 7
 ---
 
 ## Overview
