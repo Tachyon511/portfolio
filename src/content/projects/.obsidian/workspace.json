@@ -28,11 +28,25 @@
               "type": "markdown",
               "state": {
                 "file": "opengl-renderer.md",
-                "mode": "source",
+                "mode": "preview",
                 "source": true
               },
               "icon": "lucide-file",
               "title": "opengl-renderer"
+            }
+          },
+          {
+            "id": "f9d7894791a9c25b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "procedural spider.md",
+                "mode": "source",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "procedural spider"
             }
           },
           {
@@ -50,7 +64,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -227,15 +241,16 @@
       "bases:Create new base": false
     }
   },
-  "active": "e7313e21242aa1ba",
+  "active": "f9d7894791a9c25b",
   "lastOpenFiles": [
+    "Medieval Modular Architecture Kit.md",
+    "procedural spider.md",
+    "opengl-renderer.md",
     "Sci-fi bunker.md",
     "raise-the-stakes.md",
     "Incidental Minds Report.md",
     "batch-editing-plugin.md",
     "echoes-of-war.md",
-    "Medieval Modular Architecture Kit.md",
-    "opengl-renderer.md",
     "Untitled.canvas",
     "echoes-of-war – kópia.md",
     "raise-the-stakes – kópia.md",

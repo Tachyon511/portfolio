@@ -1,5 +1,5 @@
 ---
-title: Medieval Modular Architecture Kit
+title: Modular Medieval Architecture Kit
 slug: medieval-kit
 category: Environment Design
 description: Modular architectural asset kit for game development with procedural and hand-painted shaders. Optimized for real-time use in Unreal Engine 5.
