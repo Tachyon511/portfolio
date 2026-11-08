@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
+import Image from "next/image";
 
 type ProjectImageProps = {
   src: string;
@@ -17,6 +18,10 @@ export default function ProjectImage({
   cover = false,
 }: ProjectImageProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const canOptimize = src.startsWith("/") && !src.startsWith("//") && !/\.(gif|svg)(?:[?#]|$)/i.test(src);
+  const imageSizes = embedded
+    ? "(max-width: 767px) 100vw, 850px"
+    : "(max-width: 1100px) 100vw, 1400px";
 
   // Close the full-screen preview with Escape.
   useEffect(() => {
@@ -82,13 +87,30 @@ export default function ProjectImage({
               : "relative block aspect-video w-full"
           }
         >
-          <img
-            src={src}
-            alt={alt}
-            className={`absolute inset-0 h-full w-full ${
-              cover ? "object-cover object-center" : "object-contain"
-            }`}
-          />
+          {canOptimize ? (
+            <>
+              {/* Request a sharper optimized rendition for on-page display. */}
+              {/* Browser selects a responsive resolution. Original is loaded only in fullscreen. */}
+              <Image
+                src={src}
+                alt={alt}
+                fill
+                sizes={imageSizes}
+                loading="lazy"
+                className={cover ? "object-cover object-center" : "object-contain"}
+              />
+            </>
+          ) : (
+            <img
+              src={src}
+              alt={alt}
+              loading="lazy"
+              decoding="async"
+              className={`absolute inset-0 h-full w-full ${
+                cover ? "object-cover object-center" : "object-contain"
+              }`}
+            />
+          )}
 
           {/* Only the overlay fades in: the image never changes size. */}
           <span className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center bg-black/0 opacity-0 transition-all duration-200 group-hover:bg-black/25 group-hover:opacity-100 group-focus-visible:bg-black/25 group-focus-visible:opacity-100">
@@ -112,7 +134,7 @@ export default function ProjectImage({
 
           {/* Embedded captions stay inside the 16:9 media frame. */}
           {embedded && alt && (
-            <span className="pointer-events-none absolute inset-x-0 bottom-0 z-20 bg-black/70 px-3 py-2 text-sm text-zinc-200">
+            <span className="pointer-events-none absolute inset-x-0 bottom-0 z-20 bg-black/70 px-3 py-2 text-xs text-zinc-200">
               {alt}
             </span>
           )}

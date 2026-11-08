@@ -8,8 +8,8 @@ heroImage: /projects/procedural-spider/hero.png
 tools:
   - Unreal Engine 5
   - Blender
-order: 1
-tags:
+order: 2
+tags: Animation Programming
 ---
 
 ## Overview

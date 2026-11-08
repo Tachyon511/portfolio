@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 
 export type GalleryMedia = {
   src: string;
@@ -20,6 +21,8 @@ export default function ProjectGallery({ media, projectTitle }: ProjectGalleryPr
 
   const active = media[activeIndex] ?? media[0];
   const multiple = media.length > 1;
+  const optimizeSrc = (src: string) =>
+    src.startsWith("/") && !src.startsWith("//") && !/\.(gif|svg)(?:[?#]|$)/i.test(src);
 
   function previous() {
     setActiveIndex((i) => (i + media.length - 1) % media.length);
@@ -34,13 +37,16 @@ export default function ProjectGallery({ media, projectTitle }: ProjectGalleryPr
       {/* The main hero media itself is always 16:9. */}
       <div className="group relative aspect-video w-full overflow-hidden">
         {active.type === "image" ? (
+          // Full-resolution original is shown for the SELECTED gallery item.
+          // Thumbnails below still use small Next.js optimized versions.
           <img
             key={active.src}
             src={active.src}
             alt={active.alt}
+            loading="eager"
+            decoding="async"
             className="absolute inset-0 h-full w-full object-contain"
-          />
-        ) : (
+          />        ) : (
           <video
             key={active.src}
             src={active.src}
@@ -100,7 +106,17 @@ export default function ProjectGallery({ media, projectTitle }: ProjectGalleryPr
                 }`}
               >
                 {thumbnail ? (
-                  <img src={thumbnail} alt="" className="h-full w-full object-cover" />
+                  optimizeSrc(thumbnail) ? (
+                    <Image
+                      src={thumbnail}
+                      alt=""
+                      fill
+                      sizes="160px"
+                      className="object-cover"
+                    />
+                  ) : (
+                    <img src={thumbnail} alt="" loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover" />
+                  )
                 ) : (
                   <span className="flex h-full w-full items-center justify-center bg-[#11151a] text-lg text-white">▶</span>
                 )}

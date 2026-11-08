@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "procedural spider.md",
+                "file": "batch-editing-plugin.md",
                 "mode": "source",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "procedural spider"
+              "title": "batch-editing-plugin"
             }
           },
           {
@@ -243,14 +243,14 @@
   },
   "active": "f9d7894791a9c25b",
   "lastOpenFiles": [
-    "Medieval Modular Architecture Kit.md",
+    "echoes-of-war.md",
     "procedural spider.md",
+    "Medieval Modular Architecture Kit.md",
     "opengl-renderer.md",
     "Sci-fi bunker.md",
     "raise-the-stakes.md",
     "Incidental Minds Report.md",
     "batch-editing-plugin.md",
-    "echoes-of-war.md",
     "Untitled.canvas",
     "echoes-of-war – kópia.md",
     "raise-the-stakes – kópia.md",
