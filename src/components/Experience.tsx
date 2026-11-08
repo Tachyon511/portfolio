@@ -31,7 +31,7 @@ export default function Experience() {
           </div>
 
           <Link
-            href="/projects/incidental-minds-report"
+            href="/projects/we-resist"
             className="group relative block min-h-64 overflow-hidden border-t border-white/10 md:border-l md:border-t-0"
           >
             <img

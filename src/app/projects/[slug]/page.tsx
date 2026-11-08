@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
@@ -128,6 +129,24 @@ export function generateStaticParams() {
   return getAllProjects().map((project) => ({
     slug: project.slug,
   }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const project = getProjectBySlug(slug);
+
+  if (!project) {
+    return { title: "Project Not Found" };
+  }
+
+  return {
+    title: project.title,
+    description: project.description,
+  };
 }
 
 export default async function ProjectPage({

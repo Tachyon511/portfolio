@@ -15,7 +15,7 @@ tags:
 ---
 :::split
 ## Overview
-The goal of this project was gain better experience on how modular kits work and how to implement them properly in Unreal Engine 5. The project uses exclusively tiled materials with the addition of hand-painted and dynamic shaders.
+The goal of this project was to gain better experience on how modular kits work and how to implement them properly in Unreal Engine 5. The project uses exclusively tiled materials with the addition of hand-painted and dynamic shaders.
 
 The kit is inspired by medieval english architecture and combines Gothic and Romanesque elements with sturdy and fortified aesthetic into one cohesive system suitable for both religious or civic environments.
 :::next
