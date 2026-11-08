@@ -17,8 +17,6 @@ export const metadata: Metadata = {
     default: "Maxim Brna | Portfolio",
     template: "%s | Maxim Brna",
   },
-  description:
-    "Portfolio of Maxim Brna, a 3D and Technical Artist specializing in Unreal Engine 5, procedural animation, shaders, and environment art.",
 };
 
 export default function RootLayout({

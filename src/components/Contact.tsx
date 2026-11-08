@@ -6,7 +6,7 @@ export default function Contact() {
           <h2 className="text-3xl font-semibold">About me</h2>
 
           <p className="mt-5 max-w-md text-zinc-300">
-            I&apos;m a Game Development student focused on 3D and Technical Art. I enjoy working across multiple parts of the pipeline to create immersive and functional assets, tools, and systems.
+            I&apos;m a Game Development student focused on 3D and Technical Art. I enjoy working across multiple parts of the 3D pipeline and connecting various systems into coherent and functional assets.
           </p>
 
           <p className="mt-5 max-w-md text-zinc-300">
