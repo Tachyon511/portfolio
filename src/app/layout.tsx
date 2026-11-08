@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Maxim Brna | 3D & Technical Artist",
+    default: "Maxim Brna | Portfolio",
     template: "%s | Maxim Brna",
   },
   description:
